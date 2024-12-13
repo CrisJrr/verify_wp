@@ -163,37 +163,3 @@ base_nova_df = base_nova.df()
 df_combined = pd.concat([base_concat, base_nova_df], ignore_index=True)
 df_combined.to_parquet(r"G:\Drives compartilhados\Mystery Machine\00. Suporte\01. Higienizador\WhatsApp ( Higienizados ).parquet")
 print("Base concatenada")
-
-# # -------------------------------------------- Envia base higienizada para o Gabs --------------------------------------------
-
-# # print("Enviando base pro Gabs")
-
-# # Configurações do WebDriver para manter cache e historico
-# chrome_options = Options()
-# chrome_options.add_experimental_option("detach", True)
-# dir_path = os.getcwd()
-# profile = os.path.join(dir_path, "profile", "wpp")
-# chrome_options.add_argument(r"user-data-dir={}".format(profile))
-# servico = Service(ChromeDriverManager().install())
-# nav = webdriver.Chrome(service=servico, options=chrome_options)
-# espera = WebDriverWait(nav, timeout=30)
-
-# # Mensagem de confirmação
-# nav.get("https://web.whatsapp.com/send?phone=5519999317167&text=Campanha%20higienizada")
-# title = nav.title
-# # Aperta botão de enviar
-# btn_envia =  espera.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[2]/div[2]/button/span'))).click()
-# # Arquivo higienizado
-# higienizado = r"G:\Drives compartilhados\Mystery Machine\00. Suporte\01. Higienizador\Arquivo Retornado.csv"
-# # Aperta botão de anexo
-# btn_anexo = espera.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/div'))).click()
-# time.sleep(1)
-# # Carrega arquivo na conversa
-# btn_doc = nav.find_element(By.XPATH, '//*[@id="main"]/footer/div[1]/div/span[2]/div/div[1]/div[2]/div/span/div/ul/div/div[1]/li/div/input').send_keys(higienizado)
-# # Aperta botão de enviar
-# time.sleep(3)
-# btn_env = espera.until(EC.element_to_be_clickable((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div[2]/span/div/span/div/div/div[2]/div/div[2]/div[2]/div/div'))).click()
-
-# time.sleep(1)
-# nav.quit()
-# print("Base enviada")
